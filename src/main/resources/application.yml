@@ -1,0 +1,5 @@
+server:
+  port: 9053
+spring:
+  profiles:
+    active: dev

@@ -20,6 +20,18 @@ public class TempleUtil {
         return (new StringBuilder()).append(Character.toUpperCase(value.charAt(0))).append(value.substring(1)).toString();
     }
 
+    public static String controllerName(String value){
+        return String.format("%sController",firstUpper(value));
+    }
+
+    public static String serviceName(String value){
+        return String.format("%sService",firstUpper(value));
+    }
+
+    public static String iServiceName(String value){
+        return String.format("I%sService",firstUpper(value));
+    }
+
     public static String checkValue(String value,String methodName) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = TempleUtil.class.getMethod(methodName,new Class[]{String.class});
         return (String)method.invoke(null,value);

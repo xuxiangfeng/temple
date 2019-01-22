@@ -18,7 +18,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping(value = "")
-public class <<name::firstUpper>>Controller {
+public class <<name::controllerName>> {
 
     @PostMapping(value = "")
     public Result<Object> index(@Valid BaseQuery query, BindingResult bindingResult){

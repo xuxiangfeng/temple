@@ -1,6 +1,9 @@
 package org.xxf.temple.service;
 
 import org.xxf.temple.query.spring.ControllerQuery;
+import org.xxf.temple.query.spring.IServiceQuery;
+import org.xxf.temple.query.spring.QuickQuery;
+import org.xxf.temple.query.spring.ServiceQuery;
 
 /**
  * @author: xxf
@@ -8,4 +11,10 @@ import org.xxf.temple.query.spring.ControllerQuery;
  */
 public interface ISpringService {
     void createController(ControllerQuery query);
+
+    void createService(ServiceQuery query);
+
+    void createIService(IServiceQuery query);
+
+    void quickCreate(QuickQuery query);
 }

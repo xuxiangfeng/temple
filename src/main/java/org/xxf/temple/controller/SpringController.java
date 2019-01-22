@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.xxf.temple.query.spring.ControllerQuery;
+import org.xxf.temple.query.spring.IServiceQuery;
+import org.xxf.temple.query.spring.QuickQuery;
+import org.xxf.temple.query.spring.ServiceQuery;
 import org.xxf.temple.service.ISpringService;
 import org.xxf.temple.util.Result;
 import org.xxf.temple.util.ResultCode;
@@ -32,6 +35,51 @@ public class SpringController {
 
         try{
             springService.createController(query);
+            return ResultUtil.success(true);
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResultUtil.putError(ResultCode.SYSTEM_ERROR,e.getMessage());
+        }
+    }
+
+    @GetMapping(value = "/v1/service")
+    public Result<Object> createServiceFile(@Valid ServiceQuery query, BindingResult bindingResult){
+        if(bindingResult.hasFieldErrors()){
+            return ResultUtil.putError(ResultCode.ILLEGAL_ARGUMENT,bindingResult.getFieldError().getDefaultMessage());
+        }
+
+        try{
+            springService.createService(query);
+            return ResultUtil.success(true);
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResultUtil.putError(ResultCode.SYSTEM_ERROR,e.getMessage());
+        }
+    }
+
+    @GetMapping(value = "/v1/i/service")
+    public Result<Object> createIServiceFile(@Valid IServiceQuery query, BindingResult bindingResult){
+        if(bindingResult.hasFieldErrors()){
+            return ResultUtil.putError(ResultCode.ILLEGAL_ARGUMENT,bindingResult.getFieldError().getDefaultMessage());
+        }
+
+        try{
+            springService.createIService(query);
+            return ResultUtil.success(true);
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResultUtil.putError(ResultCode.SYSTEM_ERROR,e.getMessage());
+        }
+    }
+
+    @GetMapping(value = "/v1/quick")
+    public Result<Object> quickCreate(@Valid QuickQuery query, BindingResult bindingResult){
+        if(bindingResult.hasFieldErrors()){
+            return ResultUtil.putError(ResultCode.ILLEGAL_ARGUMENT,bindingResult.getFieldError().getDefaultMessage());
+        }
+
+        try{
+            springService.quickCreate(query);
             return ResultUtil.success(true);
         }catch(Exception e){
             e.printStackTrace();

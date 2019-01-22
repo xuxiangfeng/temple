@@ -23,6 +23,6 @@ public class ControllerMatcher extends FileMatcher<ControllerQuery> {
 
     @Override
     public String getFileName(ControllerQuery query) {
-        return String.format("%sController.java",TempleUtil.firstUpper(query.getName()));
+        return String.format("%s.java",TempleUtil.controllerName(query.getName()));
     }
 }

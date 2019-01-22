@@ -13,5 +13,11 @@ public class NettyQuery extends BaseQuery {
 
     private Integer boardId;
 
+    private Integer signalStrengh;
+
+    private Integer isException;
+
+    private String passThrougnMsg;
+
 
 }

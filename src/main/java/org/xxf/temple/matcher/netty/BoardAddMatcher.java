@@ -1,7 +1,5 @@
-package org.xxf.temple.handler.netty;
+package org.xxf.temple.matcher.netty;
 
-import org.xxf.temple.handler.IHandler;
-import org.xxf.temple.query.BaseQuery;
 import org.xxf.temple.query.NettyQuery;
 import org.xxf.temple.util.ByteUtil;
 
@@ -9,7 +7,7 @@ import org.xxf.temple.util.ByteUtil;
  * @author: xxf
  * @date: 2019/1/19 0019 下午 3:06
  */
-public class BoardAddHandler extends NettyHandler {
+public class BoardAddMatcher extends NettyMatcher {
 
     @Override
     public String getCommand() {

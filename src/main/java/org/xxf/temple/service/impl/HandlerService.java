@@ -2,8 +2,8 @@ package org.xxf.temple.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.xxf.temple.contants.HandlerType;
-import org.xxf.temple.handler.IHandler;
-import org.xxf.temple.handler.netty.BoardAddHandler;
+import org.xxf.temple.matcher.IMatcher;
+import org.xxf.temple.matcher.netty.*;
 import org.xxf.temple.query.NettyQuery;
 import org.xxf.temple.service.IHandlerService;
 
@@ -18,11 +18,19 @@ public class HandlerService implements IHandlerService {
     @Override
     public String nettyHandler(NettyQuery query) throws Exception{
         Integer handlerType = query.getHandlerType();
-        IHandler IHandler = null;
+        IMatcher iMatcher = null;
         if(handlerType == HandlerType.NETTY_BOARD_ADD){
-            IHandler = new BoardAddHandler();
+            iMatcher = new BoardAddMatcher();
+        }else if(handlerType == HandlerType.NETTY_REGISTER){
+            iMatcher = new RegisterMatcher();
+        }else if(handlerType == HandlerType.NETTY_SIGNAL_STRENGH){
+            iMatcher = new SingalStrenchMatcher();
+        }else if(handlerType == HandlerType.NETTY_BOARD_EXCEPTION){
+            iMatcher = new BoardExceptionMatcher();
+        }else if(handlerType == HandlerType.NETTY_PASS_THROUGH){
+            iMatcher = new PassThroughMatcher();
         }
-        return IHandler.temple(query);
+        return iMatcher.matcher(query);
     }
 
 }
